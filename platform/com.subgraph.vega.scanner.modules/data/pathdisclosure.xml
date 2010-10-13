@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert>
+<title>Path disclosure</title>
+	
+	<class>Information</class>
+	<severity>Info</severity>		
+	<discussion>
+		Path has been disclosed 
+	</discussion>
+	
+	
+</alert>
+
