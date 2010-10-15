@@ -7,12 +7,19 @@ import org.apache.http.HttpResponse;
 import com.subgraph.vega.api.scanner.model.IScanAlert;
 import com.subgraph.vega.api.scanner.model.IScanModel;
 import com.subgraph.vega.api.scanner.modules.AbstractResponseProcessingModule;
+import com.subgraph.vega.api.model.IModel;
+import com.subgraph.vega.api.model.web.IWebGetTarget;
+import com.subgraph.vega.api.model.web.IWebHost;
+import com.subgraph.vega.api.model.web.IWebModel;
+import com.subgraph.vega.api.model.web.IWebPath;
+import com.subgraph.vega.api.requestlog.IRequestLog;
+
 
 public class ServerBannerModule extends AbstractResponseProcessingModule {
 
 	@Override
-	public void processResponse(HttpRequest request, HttpResponse response, IScanModel scanModel) {
-		final Header serverHeader = response.getFirstHeader("Server");
+	public void processResponse(HttpRequest request, IHttpResponse response, IScanModel scanModel,IRequestLog requestLog, IModel model) {
+		final Header serverHeader = response.getRawResponse().getFirstHeader("Server");
 		
 		if(serverHeader == null || serverHeader.getValue() == null) 
 			return;

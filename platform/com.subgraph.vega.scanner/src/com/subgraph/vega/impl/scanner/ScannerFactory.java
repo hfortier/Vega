@@ -10,6 +10,12 @@ import com.subgraph.vega.api.scanner.model.IScanAlertRepository;
 import com.subgraph.vega.api.scanner.model.IScanModel;
 import com.subgraph.vega.api.scanner.modules.IScannerModuleRegistry;
 import com.subgraph.vega.impl.scanner.model.ScanModel;
+import com.subgraph.vega.api.model.IModel;
+import com.subgraph.vega.api.model.web.IWebGetTarget;
+import com.subgraph.vega.api.model.web.IWebHost;
+import com.subgraph.vega.api.model.web.IWebModel;
+import com.subgraph.vega.api.model.web.IWebPath;
+import com.subgraph.vega.api.requestlog.IRequestLog;
 
 public class ScannerFactory implements IScannerFactory {
 
@@ -19,6 +25,8 @@ public class ScannerFactory implements IScannerFactory {
 	private IHttpRequestEngineFactory requestEngineFactory;
 	private IScannerModuleRegistry moduleRegistry;
 	private IScanAlertRepository scanAlertRepository;
+	private IRequestLog requestLog;
+	private IModel model;
 	
 	protected void activate() {
 		scanModel = new ScanModel(scanAlertRepository);
@@ -40,9 +48,25 @@ public class ScannerFactory implements IScannerFactory {
 	@Override
 	public IScanner createScanner(IScannerConfig config) {
 		final IHttpRequestEngine requestEngine = requestEngineFactory.createRequestEngine(requestEngineFactory.createConfig());
-		return new Scanner(config, scanModel, crawlerFactory, requestEngine, moduleRegistry);
+		return new Scanner(config, scanModel, requestLog, model, crawlerFactory, requestEngine, moduleRegistry);
 	}
 
+	protected void setRequestLog(IRequestLog requestLog) {
+		this.requestLog = requestLog;
+	}
+	
+	protected void unsetRequestLog(IRequestLog requestLog) {
+		this.requestLog = null;
+	}
+
+	protected void setModel(IModel model) {
+		this.model = model;
+	}
+	
+	protected void unsetModel(IModel model) {
+		this.model = null;
+	}
+	
 	protected void setCrawlerFactory(IWebCrawlerFactory crawlerFactory) {
 		this.crawlerFactory = crawlerFactory;
 	}
