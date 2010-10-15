@@ -1,5 +1,7 @@
 package com.subgraph.vega.internal.requestlog;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 
 import org.apache.http.HttpHost;
@@ -43,7 +45,19 @@ public class RequestLog implements IRequestLog {
 		store.store(record);
 		eventManager.fireEvent(new AddRecordEvent(record));
 	}
-	
+	@Override
+	public long addRequestResponse(HttpRequest request, HttpResponse response) {
+		URI uri;
+		try {
+			uri = new URI(request.getRequestLine().getUri());
+			HttpHost host = new HttpHost(uri.getHost(),uri.getPort(),uri.getScheme());
+			return addRequestResponse(request,response,host);
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
 	@Override
 	public long addRequestResponse(HttpRequest request, HttpResponse response,
 			HttpHost host) {

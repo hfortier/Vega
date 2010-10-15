@@ -10,6 +10,7 @@ public interface IRequestLog {
 	long allocateRequestId();
 	long addRequest(HttpRequest request, HttpHost host);
 	void addRequest(long requestId, HttpRequest request, HttpHost host);
+	long addRequestResponse(HttpRequest request, HttpResponse response);
 	long addRequestResponse(HttpRequest request, HttpResponse response, HttpHost host);
 	void addResponse(long requestId, HttpResponse response);
 	IRequestLogRecord lookupRecord(long requestId);

@@ -7,7 +7,7 @@ var module = {
 
 function run() {
   var serverHeaders=new Array();
-  serverHeaders=this.httpResponse.getHeaders("Set-cookie");
+  serverHeaders=httpResponse.rawResponse.getHeaders("Set-cookie");
   var uri=new URI(this.httpRequest.getRequestLine().getUri());
   print("Testing cookie security on ressource: " + this.httpRequest.getRequestLine().getUri());
   if(!serverHeaders)

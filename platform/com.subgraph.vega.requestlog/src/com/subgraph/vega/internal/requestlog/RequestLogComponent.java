@@ -34,6 +34,10 @@ public class RequestLogComponent implements IRequestLog {
 	}
 	
 	@Override
+	public long addRequestResponse(HttpRequest request, HttpResponse response) {
+		return log.addRequestResponse(request, response);
+	}
+	@Override
 	public void addResponse(long requestId, HttpResponse response) {
 		log.addResponse(requestId, response);		
 	}

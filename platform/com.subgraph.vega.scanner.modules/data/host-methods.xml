@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert>
+<title>Supported http methods</title>
+	
+	<class>Information</class>
+	<severity>Info</severity>		
+	<discussion>
+		The host support the following methods	
+	</discussion>
+</alert>
+

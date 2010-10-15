@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert>
+<title>Trace methods vulnerable to XSS</title>
+	
+	<class>Information</class>
+	<severity>High</severity>		
+	<discussion>
+		The host is vulnerable to Trace XSS
+	</discussion>
+	
+	
+</alert>
+

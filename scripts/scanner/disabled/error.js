@@ -18,6 +18,7 @@ function run() {
   var pathattr = "server.path.error" + uri.toString();
 
   print("Testing error message on ressource: " + this.httpRequest.getRequestLine().getUri());
+/*
   for (var i = 0; i < errormsg.length; i++) {
 	  if(response.bodyAsString.match(errormsg[i])){
 		  model.set(pathattr, pathArray[i]);
@@ -25,5 +26,5 @@ function run() {
 		  model.alert("error", { "output": response.bodyAsString , "resource": uri.toString() });	
 	  }
   }
-
+*/
 }

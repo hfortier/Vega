@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert>
+<title>Trace enabled on the server</title>
+	
+	<class>Information</class>
+	<severity>Info</severity>		
+	<discussion>
+		Trace is enabled on the host. Test for basic XSS has failed, this indicated that the attack was blocked. Test for more variation of XSS.
+	</discussion>
+	
+	
+</alert>
+

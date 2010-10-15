@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert>
+<title>File upload with method PUT</title>
+	
+	<class>Information</class>
+	<severity>High</severity>		
+	<discussion>
+		Methods put enabled
+	</discussion>
+</alert>
+

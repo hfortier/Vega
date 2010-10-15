@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert>
+<title>Auto indexing is enabled on the server</title>
+	
+	<class>Information</class>
+	<severity>Info</severity>		
+	<discussion>
+		Auto indexing is enabled on the server
+	</discussion>
+	
+	
+</alert>
+

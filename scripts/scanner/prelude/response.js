@@ -19,6 +19,12 @@ Response.prototype.header = function(name) {
   return (hdr && hdr.value);
 };
 
+Response.prototype.headers = function(name) {
+	  var hdr=new Array();
+	  var hdr = this.httpResponse.getHeaders(name);
+	  return (hdr);
+};
+
 Response.prototype.consumeContent = function() {
   if(this.httpResponse.entity)
     this.httpResponse.entity.consumeContent();
@@ -31,11 +37,11 @@ Response.prototype.__defineGetter__("bodyAsString", function() {
       return null; /* or "" ? */
     }
     if(this.entityString) {
-      print("returning cached :"+ this.entityString);
+    //  print("returning cached :"+ this.entityString);
       return this.entityString;
     }
     this.entityString = EntityUtils.toString(e);
-    print("returning calculated: "+ this.entityString);
+   // print("returning calculated: "+ this.entityString);
     return this.entityString;
     /* XXX exceptions */
     //return (this.entityString || (this.entityString = EntityUtils.toString(e)));
