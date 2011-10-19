@@ -8,6 +8,8 @@ function initialize(ctx) {
 }
 
 function process(req, res, ctx) {
+  if (ctx.getResponseVaries()) return;
+
   if (ctx.hasModuleFailed()) return;
 
   if (res.fetchFail) {

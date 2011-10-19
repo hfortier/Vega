@@ -8,6 +8,7 @@ function initialize(ctx) {
 }
 
 function process(req, res, ctx) {
+  if (ctx.getResponseVaries()) return;
   if (ctx.hasModuleFailed()) return;
   if (res.fetchFail) {
     ctx.error(req, res, "During shell injection checks");

@@ -8,6 +8,7 @@ function initialize(ctx) {
 }
 
 function process(req, res, ctx) {
+  if (ctx.getResponseVaries()) return;
   var loc = headerValue(res, "Location");
   if (matchesInjectedUrls(loc)) {
     ctx.alert("vinfo-url-inject", request, response, {

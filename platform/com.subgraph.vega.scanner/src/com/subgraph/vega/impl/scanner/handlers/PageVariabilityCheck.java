@@ -49,8 +49,8 @@ public class PageVariabilityCheck extends CrawlerModule {
 		if(!ctx.allResponsesReceived())
 			return;
 
-		if(ps.getResponseVaries())
-			return;
+		//if(ps.getResponseVaries())
+		//	return;
 
 		injectionChecks.launchInjectionModules(ps);
 
