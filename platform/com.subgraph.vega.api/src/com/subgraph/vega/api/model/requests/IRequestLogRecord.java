@@ -14,10 +14,18 @@ import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 
-public interface IRequestLogRecord {
+import com.subgraph.vega.api.model.tags.ITaggable;
+
+public interface IRequestLogRecord extends ITaggable {
 	long getRequestId();
 	long getTimestamp();
-	long getRequestMilliseconds(); /**< Request execution time in milliseconds. Returns -1 when unknown. */
+	
+	/**
+	 * Get the end-to-end request execution time in milliseconds.
+	 * @return Request execution time in milliseconds, or -1 if unknown.
+	 */
+	long getRequestMilliseconds();
+
 	HttpHost getHttpHost();
 	HttpRequest getRequest();
 	HttpResponse getResponse();

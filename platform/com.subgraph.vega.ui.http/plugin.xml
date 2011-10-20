@@ -4,6 +4,7 @@
    <extension
          point="org.eclipse.ui.views">
       <view
+            allowMultiple="true"
             class="com.subgraph.vega.ui.http.requestviewer.HttpRequestView"
             icon="icons/requestview.png"
             id="com.subgraph.vega.views.http"
@@ -62,10 +63,6 @@
          </enabledWhen>
       </handler>
       <handler
-            class="com.subgraph.vega.ui.http.commands.ReplayRequest"
-            commandId="com.subgraph.vega.commands.popup.replayRequest">
-      </handler>
-      <handler
             class="com.subgraph.vega.ui.http.commands.SendRequest"
             commandId="com.subgraph.vega.commands.sendRequest">
       </handler>
@@ -92,6 +89,14 @@
       <handler
             class="com.subgraph.vega.ui.http.commands.ProxyPassthrough"
             commandId="com.subgraph.vega.commands.proxyPassthrough">
+      </handler>
+      <handler
+            class="com.subgraph.vega.ui.http.commands.ReplayRequest"
+            commandId="com.subgraph.vega.commands.popup.replayRequest">
+      </handler>
+      <handler
+            class="com.subgraph.vega.ui.http.commands.TagEdit"
+            commandId="com.subgraph.vega.commands.popup.tagEdit">
       </handler>
    </extension>
    <extension
@@ -132,6 +137,11 @@
             categoryId="com.subgraph.vega.commands.httpRequestViewPopupCategory"
             id="com.subgraph.vega.commands.popup.replayRequest"
             name="Replay Request">
+      </command>
+      <command
+            categoryId="com.subgraph.vega.commands.httpRequestViewPopupCategory"
+            id="com.subgraph.vega.commands.popup.tagEdit"
+            name="Edit Tags">
       </command>
       <category
             description="Commands for controlling the request editor"
@@ -252,6 +262,20 @@
                </with>
             </visibleWhen>
          </command>
+         <command
+               commandId="com.subgraph.vega.commands.popup.tagEdit"
+               label="Edit Tags"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+               <with
+                     variable="selection">
+                  <count
+                        value="+">
+                  </count>
+               </with>
+            </visibleWhen>
+         </command>
       </menuContribution>
       <menuContribution
             locationURI="toolbar:com.subgraph.vega.views.requestEdit">
@@ -331,14 +355,20 @@
          point="org.eclipse.ui.preferencePages">
       <page
             class="com.subgraph.vega.ui.http.preferencepage.HttpPreferencePage"
-            id="com.subgraph.vega.ui.http.preferencepage"
+            id="com.subgraph.vega.ui.http.preferences.proxy"
             name="Proxy">
+      </page>
+      <page
+            category="com.subgraph.vega.ui.http.preferences.proxy"
+            class="com.subgraph.vega.ui.http.preferencepage.ProxyListenerPreferencePage"
+            id="com.subgraph.vega.ui.http.preferences.proxyListener"
+            name="Listener">
       </page>
    </extension>
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer
-            class="com.subgraph.vega.ui.http.preferencepage.HTTPPreferenceInitializer">
+            class="com.subgraph.vega.ui.http.preferencepage.HttpPreferenceInitializer">
       </initializer>
    </extension>
    <extension
